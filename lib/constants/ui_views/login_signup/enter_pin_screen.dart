@@ -71,38 +71,53 @@ class PinScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                OutlinedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0))),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 50),
-                    child: Image.asset(
-                      "assets/icons/google.png",
-                      height: 25,
-                      width: 25,
-                    ),
-                  ),
-                ),                PinContainer(txt: "0",),
-                OutlinedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0))),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 50),
-                    child: Image.asset(
-                      "assets/icons/google.png",
-                      height: 25,
-                      width: 25,
+                Container(
+                  margin: EdgeInsets.symmetric(vertical:15.0),
+                  padding: EdgeInsets.all(13.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black54,width: 2),
+                      shape: BoxShape.circle),
+                  child: Center(
+                    child: FlatButton(
+                      onPressed: () {},
+                      child: Image.asset(
+                        "assets/icons/face.jpg",
+                        height: 25,
+                        width: 25,
+                      ),
                     ),
                   ),
                 ),
+                PinContainer(txt: "0",),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical:15.0),
+                  padding: EdgeInsets.all(13.0),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black54,width: 2),
+                      shape: BoxShape.circle),
+                  child: Center(
+                    child: FlatButton(
+                      onPressed: () {},
+                      child: Image.asset(
+                            "assets/icons/finger.jpg",
+                            height: 25,
+                            width: 25,
+                          ),
+                    ),
+                  ),
+                ),
+                // OutlinedButton(
+                //   onPressed: () {},
+                //   style: ButtonStyle(
+                //     shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(500.0))),
+                //   ),
+                //   child: Image.asset(
+                //     "assets/icons/google.png",
+                //     height: 25,
+                //     width: 25,
+                //   ),
+                // ),
               ],
             ),
             Padding(

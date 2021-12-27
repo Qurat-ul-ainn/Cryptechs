@@ -12,7 +12,7 @@ class MainTxt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       txt,
-      style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
     );
   }
 }
@@ -27,6 +27,7 @@ class SubTxt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       txt,
+      textAlign: TextAlign.center,
       style: TextStyle(fontSize: 15.0, color:AppColors.kGreyClr),
     );
   }

@@ -1,5 +1,8 @@
+import 'package:cryptechs/constants/ui_views/exchanges.dart';
+import 'package:cryptechs/constants/ui_views/login_signup/custom_navigation.dart';
+import 'package:cryptechs/constants/ui_views/login_signup/home.dart';
 import 'package:flutter/material.dart';
-import 'constants/ui_views/login_signup/enter_pin_screen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -10,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cryptechs',
-      home: PinScreen(),
+      home: HomeScreen(),
     );
   }
 }
