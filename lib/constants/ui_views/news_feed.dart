@@ -9,32 +9,25 @@ class NewsFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('News Feed', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          alignment: Alignment.topLeft,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30.0,
+          ),
+        ),
+        automaticallyImplyLeading: true,
+      ),
+
       body:     ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    alignment: Alignment.topLeft,
-                    icon: Icon(
-                      Icons.arrow_back,
-                      size: 30.0,
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.20,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: MainTxt(
-                      txt: "News Feed",
-                    ),
-                  ),
-                ],
-              ),
-            ),
             ListViewComponent(
               heading:
               "Algorithmic Trading\nPlatform Quantconnect\nExtends Reach",
@@ -122,61 +115,6 @@ class NewsFeedScreen extends StatelessWidget {
 
           ],
         ),
-        // child: Column(
-        //   crossAxisAlignment: CrossAxisAlignment.start,
-        //   children: [
-        //     Padding(
-        //       padding: const EdgeInsets.only(top: 20.0),
-        //       child: Row(
-        //         children: [
-        //           IconButton(
-        //             onPressed: () {},
-        //             alignment: Alignment.topLeft,
-        //             icon: Icon(
-        //               Icons.arrow_back,
-        //               size: 30.0,
-        //             ),
-        //           ),
-        //           SizedBox(
-        //             width: MediaQuery.of(context).size.width * 0.12,
-        //           ),
-        //           MainTxt(
-        //             txt: "News Feed",
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //     ListView(
-        //       children: [
-        //         Row(
-        //           children: [
-        //             IconButton(
-        //               onPressed: () {},
-        //               alignment: Alignment.topLeft,
-        //               icon: Icon(
-        //                 Icons.arrow_back,
-        //                 size: 30.0,
-        //               ),
-        //             ),
-        //             SizedBox(
-        //               width: MediaQuery.of(context).size.width * 0.12,
-        //             ),
-        //             MainTxt(
-        //               txt: "News Feed",
-        //             ),
-        //           ],
-        //         ),
-        //         ListViewComponent(
-        //           heading:
-        //               "Algorithmic Trading\nPlatform Quantconnect\nExtends Reach",
-        //           date: " April 6,2021,2:20 AM",
-        //           owner: "Sami",
-        //         ),
-        //       ],
-        //     ),
-        //   ],
-        // ),
-
     );
   }
 }

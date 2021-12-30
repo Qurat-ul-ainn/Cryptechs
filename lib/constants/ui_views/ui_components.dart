@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 //All Tittles
 class MainTxt extends StatelessWidget {
   final txt;
+  final size;
 
-  const MainTxt({Key key, this.txt}) : super(key: key);
+  const MainTxt({Key key, this.txt, this.size}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
     return Text(
       txt,
-      style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+      style: TextStyle(fontSize: size, fontWeight: FontWeight.bold),
     );
   }
 }
@@ -45,19 +47,18 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 1,
-      height: 70,
-      decoration: BoxDecoration(
-          color: AppColors.kBlueClr,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+      height: 60,
       child: FlatButton(
         onPressed: btnFunction,
-
+        color: AppColors.kBlueClr,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0)),
         child: Text(
           btnTxt,
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
-            fontWeight: FontWeight.bold,
+           // fontWeight: FontWeight.bold,
           ),
         ),
       ),

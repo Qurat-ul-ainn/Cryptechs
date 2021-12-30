@@ -9,37 +9,29 @@ class SubNewsFeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('News Feed', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          alignment: Alignment.topLeft,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30.0,
+          ),
+        ),
+        automaticallyImplyLeading: true,
+      ),
       body:     SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      alignment: Alignment.topLeft,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 30.0,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.20,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: MainTxt(
-                        txt: "News Feed",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               NewsDetailsComponent(
                 heading:
-                "Algorithmic Trading\nPlatform Quantconnect\nExtends Reach",
+                "Algorithmic Trading Platform\nQuantconnect Extends Reach",
                 date: " April 6,2021,2:20 AM",
                 owner: "Sami",
                 details:"Algorithmic trading has been used within trading exchanges since the seventies by using computers to follow the flow of financial markets. The method allows the execution of orders that are automated, and pre-programmed to adjust with price variables, time, and trade volumes. Algorithmic trading is used by cryptocurrency traders already as there is a slew of companies that offer automated services and open source trading bots."
@@ -82,6 +74,7 @@ class NewsDetailsComponent extends StatelessWidget {
               children: [
                 Text(
                   heading,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold
@@ -99,8 +92,8 @@ class NewsDetailsComponent extends StatelessWidget {
                 ),
                  Padding(
                    padding: const EdgeInsets.all(10.0),
-                   child: SubTxt(
-                    txt: details,
+                   child: Text(
+                     details,
                 ),
                  ),
               ],

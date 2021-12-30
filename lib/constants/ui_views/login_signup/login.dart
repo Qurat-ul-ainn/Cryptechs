@@ -1,3 +1,4 @@
+import 'package:cryptechs/constants/ui_views/login_signup/signup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
@@ -26,7 +27,12 @@ class LoginScreen extends StatelessWidget {
                       txt: "New User?",
                     ),
                     CustomTextButton(
-                      btnFunction: () {},
+                      btnFunction: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpScreen()),
+                        );
+                      },
                       btnText: "Create account",
                       btntTxtClr: Colors.blue,
                     ),
@@ -35,6 +41,7 @@ class LoginScreen extends StatelessWidget {
               ),
               MainTxt(
                 txt: "Log in\nto continue",
+                size: 28.0,
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -116,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 50),
+                        vertical: 15, horizontal: 50),
                     child: Image.asset(
                       "assets/icons/google.png",
                       height: 25,

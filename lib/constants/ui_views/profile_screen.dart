@@ -9,60 +9,61 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Profile', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          alignment: Alignment.topLeft,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30.0,
+          ),
+        ),
+        automaticallyImplyLeading: true,
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      alignment: Alignment.topLeft,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 30.0,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.12,
-                    ),
-                    MainTxt(
-                      txt: "Profile",
-                    ),
-                  ],
-                ),
-              ),
               Stack(
+                alignment: Alignment.bottomCenter,
                 children: [
-                  Container(
+                  Center(
+                    child: Container(
                       height: 100,
                       width: 100,
                       decoration: BoxDecoration(
-                          color: AppColors.kBlueClr, shape: BoxShape.circle),
-                    ),
-                  
-                  Positioned(
-                    child: Container(
-                     // padding: EdgeInsets.all(5.0),
-                      decoration: BoxDecoration(
-                          color: AppColors.kBlueClr, shape: BoxShape.circle),
-                      child: Center(
-                        child: IconButton(
-                          onPressed: () {},
-                          alignment: Alignment.center,
-                          icon: Icon(
-                            Icons.edit,
-                            color: Colors.white,
-                            size: 10.0,
-                          ),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('assets/icons/man.jpg'),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
                   ),
+                  Positioned(
+                    right: 140.0,
+                    child: Container(
+                      height: 25,
+                      width: 25.0,
+                      decoration: BoxDecoration(
+                          color: AppColors.kBlueClr, shape: BoxShape.circle),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                          size: 10.0,
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
               Padding(

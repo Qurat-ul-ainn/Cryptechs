@@ -10,42 +10,32 @@ class SubscriptionScreen extends StatefulWidget {
 }
 
 class _SubscriptionScreenState extends State<SubscriptionScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Subscription', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          alignment: Alignment.topLeft,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30.0,
+          ),
+        ),
+        automaticallyImplyLeading: true,
+      ),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      onPressed: () {},
-                      alignment: Alignment.topLeft,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        color: Colors.black,
-                        size: 30.0,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "Subscription",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
               Padding(
-                padding: const EdgeInsets.only(top:20.0),
+                padding: const EdgeInsets.only(top: 20.0),
                 child: Text(
                   "Get access to all\ncourses and features",
                   textAlign: TextAlign.center,
@@ -99,7 +89,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10.0,bottom:10.0),
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Row(
                   children: [
                     Icon(
@@ -118,27 +108,25 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
               ),
               Row(
                 children: [
-                  CustomContainer(text: "Free",subText:"7 days"),
-                  CustomContainer(text: "\$10",subText:"30 days"),
+                  CustomContainer(text: "Free", subText: "7 days"),
+                  CustomContainer(text: "\$10", subText: "30 days"),
                 ],
               ),
               Row(
                 children: [
-                  CustomContainer(text: "\$14",subText:"3 months"),
-                  CustomContainer(text: "\$199",subText:"one time"),
+                  CustomContainer(text: "\$14", subText: "3 months"),
+                  CustomContainer(text: "\$199", subText: "one time"),
                 ],
               ),
-
               Padding(
                 padding: const EdgeInsets.only(
                   top: 20.0,
                 ),
                 child: CustomButton(
                   btnFunction: () {},
-                  btnTxt: "Log In",
+                  btnTxt: "Go Free",
                 ),
               ),
-
             ],
           ),
         ),
@@ -172,15 +160,18 @@ class CustomContainer extends StatelessWidget {
           ),
         ),
         child: RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
+
             text: '$text\n',
-            style: TextStyle(color: Colors.black, fontSize: 20.0),
-            children:  <TextSpan>[
-               TextSpan(
-                   text: subText,
+            style: TextStyle(color: Colors.black, fontSize: 20.0,fontWeight: FontWeight.bold),
+            children: <TextSpan>[
+              TextSpan(
+                  text: subText,
 
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: AppColors.kGreyClr,
+                    fontSize: 15.0
                   )),
             ],
           ),

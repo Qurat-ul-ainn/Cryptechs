@@ -1,7 +1,6 @@
 import 'package:cryptechs/constants/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cryptechs/constants/ui_views/ui_components.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key key}) : super(key: key);
@@ -9,34 +8,27 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Settings',style:TextStyle(color:Colors.black)),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          alignment: Alignment.topLeft,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30.0,
+          ),
+        ),
+        automaticallyImplyLeading: true,
+      ),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      alignment: Alignment.topLeft,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 30.0,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.20,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: MainTxt(
-                        txt: "Settings",
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               CustomView(
                 heading: "Email",
                 txt: "Example@gmail.com",
@@ -46,14 +38,17 @@ class SettingScreen extends StatelessWidget {
                 color: AppColors.kGreyClr,
               ),
               CustomView(
-                heading: "Email",
+                heading: "Default Currency",
                 txt: "USD",
                 icon: Icon(Icons.monetization_on),
               ),
+              new Divider(
+                color: AppColors.kGreyClr,
+              ),
               CustomView(
-                heading: "Email",
-                txt: "Example@gmail.com",
-                icon: Icon(Icons.email),
+                heading: "Change Pin",
+                txt: "",
+                icon: Icon(Icons.security),
               ),
               new Divider(
                 color: AppColors.kGreyClr,
@@ -62,10 +57,14 @@ class SettingScreen extends StatelessWidget {
                 heading: "Touched Pin",
                 txt: "",
                 icon: Image.asset(
+
                   "assets/icons/finger.jpg",
                   height: 25,
                   width: 25,
                 ),
+              ),
+              new Divider(
+                color: AppColors.kGreyClr,
               ),
               CustomView(
                 heading: "Payment Method",
@@ -113,28 +112,29 @@ class CustomView extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
             child: icon,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10.0),
-            child: Text(
-              heading,
-              textAlign: TextAlign.start,
-            ),
-          ),
-          SizedBox(
-            width: 35,
-          ),
+Padding(
+  padding: const EdgeInsets.only(left: 10.0),
+  child: Text(
+    heading,
+    textAlign: TextAlign.start,
+  ),
+),
+          Spacer(),
           Text(
             txt,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.right,
             style: TextStyle(fontSize: 18.0, color: AppColors.kGreyClr),
           ),
-          IconButton(
-              icon: Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppColors.kGreyClr,
-              ),
-              alignment: Alignment.centerRight,
-              onPressed: () {})
+          Expanded(
+
+            child: IconButton(
+                icon: Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: AppColors.kGreyClr,
+                ),
+                alignment: Alignment.centerRight,
+                onPressed: () {}),
+          )
         ],
       ),
     );

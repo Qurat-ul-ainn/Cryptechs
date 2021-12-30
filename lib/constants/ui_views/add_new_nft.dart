@@ -10,40 +10,30 @@ class AddNewNFTScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Add New NFT', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {},
+          alignment: Alignment.topLeft,
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 30.0,
+          ),
+        ),
+        automaticallyImplyLeading: true,
+      ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
+          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      alignment: Alignment.topLeft,
-                      icon: Icon(
-                        Icons.arrow_back,
-                        size: 30.0,
-                      ),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.12,
-                    ),
-                    MainTxt(
-                      txt: "Add New NFT",
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 28.0,
-                ),
-                child: SubTxt(
-                  txt: "NTF Name",
-                ),
+              SubTxt(
+                txt: "NTF Name",
               ),
               TextFormField(
                 decoration: const InputDecoration(

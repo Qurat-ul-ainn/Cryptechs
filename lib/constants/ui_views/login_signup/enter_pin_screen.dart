@@ -9,13 +9,11 @@ class PinScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-         // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
               alignment: Alignment.topLeft,
               child: IconButton(
                 onPressed: () {},
-                // alignment: Alignment.topLeft,
                 icon: Icon(
                   Icons.arrow_back,
                   color: Colors.black,
@@ -23,12 +21,7 @@ class PinScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-               "Enter Pin",
-              style: TextStyle(fontSize: 33.0, fontWeight: FontWeight.bold),
-
-            ),
-            SizedBox(height: 10,),
+MainTxt(txt: "Enter Pin",size: 33.0,)     ,       SizedBox(height: 10,),
             SubTxt(
               txt: "Enter Your Pin code",
             ),
