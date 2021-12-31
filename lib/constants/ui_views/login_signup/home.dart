@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(20.0),
+          margin: EdgeInsets.only(top:20.0,left: 20.0,right: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,8 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                        color: AppColors.kBlueClr, shape: BoxShape.circle),
+                    decoration:BoxDecoration(
+                        color:AppColors.kBlueClr,
+                        border: Border.all(
+                          color:AppColors.kBlueClr,
+
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(18))),
                     child: IconButton(
                       onPressed: () {},
                       icon: Icon(
@@ -64,60 +69,64 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 // child: SubTxt(txt: "Top Coins",),
               ),
-              ListView(
-                scrollDirection: Axis.horizontal,
-                primary: false,
-                shrinkWrap: true,
-                children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
-                    height: 150,
-                    width: 120.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      image: DecorationImage(
-                        image: AssetImage('assets/icons/binance.png'),
-                        fit: BoxFit.cover,
+              Container(
+                height: 200,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  primary: false,
+                  shrinkWrap: true,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      height: 150,
+                      width: 120.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        image: DecorationImage(
+                          image: AssetImage('assets/icons/binance.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
-                    height: 150,
-                    width: 120.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      image: DecorationImage(
-                        image: AssetImage('assets/icons/kucoin.png'),
-                        fit: BoxFit.cover,
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      height: 150,
+                      width: 120.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        image: DecorationImage(
+                          image: AssetImage('assets/icons/kucoin.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
-                    height: 150,
-                    width: 120.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      image: DecorationImage(
-                        image: AssetImage('assets/icons/binance.png'),
-                        fit: BoxFit.cover,
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      height: 150,
+                      width: 120.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        image: DecorationImage(
+                          image: AssetImage('assets/icons/binance.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
-                    height: 150,
-                    width: 120.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                      image: DecorationImage(
-                        image: AssetImage('assets/icons/kucoin.png'),
-                        fit: BoxFit.cover,
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      height: 150,
+                      width: 120.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        image: DecorationImage(
+                          image: AssetImage('assets/icons/kucoin.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -245,82 +254,69 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Stack(
         overflow: Overflow.visible,
         alignment: new FractionalOffset(.5, 1.0),
-        children: [
-          new Padding(
-            padding: const EdgeInsets.only(bottom: 40.0),
-            child: new FloatingActionButton(
-              // notchMargin: 24.0,
-              onPressed: () => print('hello world'),
-              child: new Icon(Icons.arrow_back),
+        children:[
+          BottomAppBar(
+           // shape: CircularNotchedRectangle(),
+           // clipBehavior: Clip.antiAlias,
+            child: BottomNavigationBar(
+              //selectedFontSize: 0.0,
+              backgroundColor: Colors.grey[100],
+              fixedColor: AppColors.kBlueClr,
+              type: BottomNavigationBarType.fixed,
+              onTap: _onItemTappped,
+              currentIndex: _selectedIndex,
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home_outlined,
+                      size: 25.0,
+                    ),
+                    // label: 'Home',
+                    title: showIndicator(_selectedIndex == 0)),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.message_outlined,
+                      size: 25.0,
+                    ),
+                    // label: 'Courses',
+                    title: showIndicator(_selectedIndex == 1)),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.access_time_outlined,
+                      size: 25.0,
+                    ),
+                    // label: 'Time Table',
+                    title: showIndicator(_selectedIndex == 2)),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.account_circle_outlined,
+                      size: 25.0,
+                    ),
+                    //label: 'Profile',
+                    title: showIndicator(_selectedIndex == 3)),
+              ],
             ),
           ),
-          Container(
-            height: kBottomNavigationBarHeight * 1.2,
-            child: BottomAppBar(
-              //shape: CircularNotchedRectangle(),
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                height: kBottomNavigationBarHeight * 1.2,
-                child: BottomNavigationBar(
-                  backgroundColor: Colors.grey[100],
-                  fixedColor: AppColors.kBlueClr,
-                  type: BottomNavigationBarType.fixed,
-                  // showSelectedLabels: false,
-                  // showUnselectedLabels: false,
-                  onTap: _onItemTappped,
-                  currentIndex: _selectedIndex,
-                  items: [
-                    BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.home_outlined,
-                          size: 25.0,
-                        ),
-                        // label: 'Home',
-                        title: showIndicator(_selectedIndex == 0)),
-                    BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.message_outlined,
-                          size: 25.0,
-                        ),
-                        // label: 'Courses',
-                        title: showIndicator(_selectedIndex == 1)),
-                    BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.access_time_outlined,
-                          size: 25.0,
-                        ),
-                        // label: 'Time Table',
-                        title: showIndicator(_selectedIndex == 2)),
-                    BottomNavigationBarItem(
-                        icon: Icon(
-                          Icons.account_circle_outlined,
-                          size: 25.0,
-                        ),
-                        //label: 'Profile',
-                        title: showIndicator(_selectedIndex == 3)),
-                  ],
+          new Positioned(
+            bottom: 40.0,
+            child: Container(
+              margin:EdgeInsets.symmetric(horizontal: 10.0),
+              decoration: BoxDecoration(
+              color:AppColors.kBlueClr,
+                border: Border.all(
+                  color:AppColors.kBlueClr,
+
                 ),
+                borderRadius: BorderRadius.all(Radius.circular(18))),
+              child: new IconButton(
+
+                onPressed: () => print('button pressed'),
+
+                icon: new Icon(Icons.arrow_forward,color: Colors.white,),
               ),
             ),
-            // child: BottomNavigationBar(
-            //   backgroundColor: Colors.grey[100],
-            //
-            //
-            //   items: [
-            //     BottomNavigationBarItem(
-            //         icon: Icon(Icons.home),
-            //         title: showIndicator(_selectedIndex == 0)),
-            //     BottomNavigationBarItem(
-            //         icon: Icon(Icons.access_alarm),
-            //         title: showIndicator(_selectedIndex == 1)),
-            //     BottomNavigationBarItem(
-            //         icon: Icon(Icons.settings),
-            //         title: showIndicator(_selectedIndex == 2)),
-            //   ],
-            //   onTap: _onItemTappped,
-            //   currentIndex: _selectedIndex,
-            // ),
           ),
+
         ],
       ),
     );
@@ -329,31 +325,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget showIndicator(bool show) {
     return show
         ? Padding(
-            padding: const EdgeInsets.only(top: 4),
-            child: ClipPath(
+            padding: const EdgeInsets.only(top: 8),
+            child:ClipPath(
               clipper: new CustomHalfCircleClipper(),
               child: new Container(
-                height: 15.0,
+                height: 20.0,
                 width: 30.0,
                 decoration: new BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(
-                      MediaQuery.of(context).size.width / 2),
+                  color: AppColors.kBlueClr,
+                  shape: BoxShape.circle,
                 ),
               ),
             )
-            // Container(
-            //   height: 200.0,
-            //   decoration: new BoxDecoration(
-            //     color: Colors.red,
-            //     borderRadius: BorderRadius.vertical(
-            //         bottom: Radius.elliptical(
-            //
-            //             MediaQuery.of(context).size.width, 100.0
-            //         )
-            //     ),
-            //   ),
-            // ),//Icon(Icons.brightness_1, size: 10, color: AppColors.kBlueClr),
             )
         : SizedBox();
   }
