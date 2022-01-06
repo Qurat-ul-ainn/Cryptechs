@@ -1,6 +1,7 @@
 import 'package:cryptechs/constants/ui_views/add_new_nft.dart';
 import 'package:cryptechs/constants/ui_views/exchanges.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/home.dart';
+import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/profile_update.dart';
 import 'package:cryptechs/constants/ui_views/news_feed.dart';
 import 'package:cryptechs/constants/ui_views/profile_screen.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cryptechs',
-      home: HomeScreen()//ExchangesScreen(),
+      home: LoginScreen()
     );
   }
 }

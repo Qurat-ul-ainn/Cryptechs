@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "630824682016",
+    "project_id": "cryptech-fbd82",
+    "storage_bucket": "cryptech-fbd82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630824682016:android:ddcc65f47bf16a0af6b245",
+        "android_client_info": {
+          "package_name": "com.example.cryptechs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630824682016-kilufgofbucnf7uo3im5sogvuv44jhvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK8nWNTSgWaskkC6szRYU_ZyZfwunrNCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630824682016-kilufgofbucnf7uo3im5sogvuv44jhvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
