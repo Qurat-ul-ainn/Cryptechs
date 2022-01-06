@@ -85,8 +85,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: pass);
         Navigator.of(context).pop();
-        print('result is $result')
-;      FirebaseUser user = result.user;
+        print('result is $result');
+        print('hello firebase');
+        FirebaseUser user = result.user;
 
       UserUpdateInfo info = UserUpdateInfo();
       // info.displayName=homePage;
