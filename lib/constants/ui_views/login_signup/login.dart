@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
 import 'package:cryptechs/glooble_key.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 
 class LoginScreen extends StatefulWidget {
@@ -14,11 +16,14 @@ class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
-
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
 
   final _passController = TextEditingController();
+
+
+  bool isLoading = false;
+
 
   Future<FirebaseUser> ifRegister(String email, String pass) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
@@ -33,6 +38,26 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final GoogleSignIn _googleSignIn = GoogleSignIn();
+  // FirebaseUser user;
+
+  // void signInWithGoogle()async
+  // {
+  //   final GoogleSignInAccount googleSignInAccount =
+  //   await _googleSignIn.signIn();
+  //   final GoogleSignInAuthentication googleSignInAuthentication =
+  //   await googleSignInAccount.authentication;
+  //   final AuthCredential credential = GoogleAuthProvider.getCredential(
+  //     accessToken: googleSignInAuthentication.accessToken,
+  //     idToken: googleSignInAuthentication.idToken,
+  //   );
+  //   await _auth.signInWithCredential(credential);
+  //   user=await _auth.currentUser();
+  //
+  // }
+
   bool inVisiblePass = true;
 
   void _togglePasswordView() {
@@ -40,6 +65,13 @@ class _LoginScreenState extends State<LoginScreen> {
       inVisiblePass = !inVisiblePass;
     });
   }
+
+
+
+  bool _isLoggedIn = false;
+  //final Map _userObj = {};
+  GoogleSignInAccount _userObj;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +224,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Center(
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: (){
+                      _googleSignUp();
+                    },
+                    // onPressed: () {
+                    //   print('google sign in');
+                    //   _googleSignIn.signIn().then((userData){
+                    //     setState(() {
+                    //       _isLoggedIn = true;
+                    //       _userObj = userData;
+                    //     });
+                    //   } ).catchError((e) {
+                    //     print(e);
+                    //   });
+                    // },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0))),
@@ -214,5 +259,35 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+}
+
+
+
+//GoogleSignUp
+Future<void> _googleSignUp() async {
+  try {
+    final GoogleSignIn _googleSignIn = GoogleSignIn(
+      scopes: [
+        'email'
+      ],
+    );
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+    print("signed in " + user.displayName);
+
+    return user;
+    HomeScreen();
+  }catch (e) {
+    print(e.message);
   }
 }

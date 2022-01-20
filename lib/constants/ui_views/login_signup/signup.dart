@@ -25,6 +25,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool inVisibleConfirm = true;
   final registerKey = GlobalKey<FormState>();
 
+
+
   void _onLoading() {
     AlertDialog alertDialog = AlertDialog(
       content: new Row(
@@ -65,6 +67,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
+
+
+
+
+
+
+
   void _togglePasswordView() {
     setState(() {
       inVisiblePass = !inVisiblePass;
@@ -76,6 +85,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       inVisibleConfirm = !inVisibleConfirm;
     });
   }
+
+
 
 
   Future<bool> registration(String email, String pass, String confirmPass) async {
@@ -280,7 +291,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Center(
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+
+                    },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0))),
