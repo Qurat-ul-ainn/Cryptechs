@@ -1,5 +1,6 @@
 import 'package:cryptechs/constants/app_colors.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
+import 'package:cryptechs/glooble_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -19,10 +20,79 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: VariableKeys.key,
+      drawer: Drawer(
+        child: ListView(
+          // Remove padding
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(
+                'Salman johr',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold),
+              ),
+              accountEmail: Text(
+                "example@gmail.com",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18.0, color: AppColors.kGreyClr),
+              ),
+              currentAccountPicture: CircleAvatar(
+                child: ClipOval(
+                  child: Image.asset(
+                    'assets/icons/man.jpg',
+                    fit: BoxFit.cover,
+                    width: 80,
+                    height: 80,
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+            ),
+            ListTile(
+              // leading: Icon(Icons.favorite),
+              title: SideTittle(tittle: "My Wallet",),
+              onTap: () => null,
+            ),
+            ListTile(
+              title: SideTittle(tittle: "Portfolio",),
+              onTap: () => null,
+            ),
+            ListTile(
+              title: SideTittle(tittle: "Static",),
+              onTap: () => null,
+            ),
+            ListTile(
+              title: SideTittle(tittle: "Transfer",),
+              onTap: () => null,
+            ),
+            ListTile(
+              title: SideTittle(tittle: "Withdraw",),
+            ),
+            ListTile(
+              title: SideTittle(tittle: "Settings",),
+              onTap: () => null,
+            ),
+            ListTile(
+              title: SideTittle(tittle: "News List",),
+              onTap: () => null,
+            ),
+            ListTile(
+              title: SideTittle(tittle: "Logout",),
+              onTap: () => null,
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top:20.0,left: 20.0,right: 20.0),
+          margin: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,15 +100,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    decoration:BoxDecoration(
-                        color:AppColors.kBlueClr,
+                    decoration: BoxDecoration(
+                        color: AppColors.kBlueClr,
                         border: Border.all(
-                          color:AppColors.kBlueClr,
-
+                          color: AppColors.kBlueClr,
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(18))),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        VariableKeys.key.currentState.openDrawer();
+                      },
                       icon: Icon(
                         Icons.view_sidebar_sharp,
                         color: Colors.white,
@@ -77,7 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
                       height: 150,
                       width: 120.0,
                       decoration: BoxDecoration(
@@ -89,7 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
                       height: 150,
                       width: 120.0,
                       decoration: BoxDecoration(
@@ -101,7 +174,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
                       height: 150,
                       width: 120.0,
                       decoration: BoxDecoration(
@@ -113,7 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
                       height: 150,
                       width: 120.0,
                       decoration: BoxDecoration(
@@ -126,7 +201,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
-
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -254,10 +328,10 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Stack(
         overflow: Overflow.visible,
         alignment: new FractionalOffset(.5, 1.0),
-        children:[
+        children: [
           BottomAppBar(
-           // shape: CircularNotchedRectangle(),
-           // clipBehavior: Clip.antiAlias,
+            // shape: CircularNotchedRectangle(),
+            // clipBehavior: Clip.antiAlias,
             child: BottomNavigationBar(
               //selectedFontSize: 0.0,
               backgroundColor: Colors.grey[100],
@@ -300,23 +374,22 @@ class _HomeScreenState extends State<HomeScreen> {
           new Positioned(
             bottom: 40.0,
             child: Container(
-              margin:EdgeInsets.symmetric(horizontal: 10.0),
+              margin: EdgeInsets.symmetric(horizontal: 10.0),
               decoration: BoxDecoration(
-              color:AppColors.kBlueClr,
-                border: Border.all(
-                  color:AppColors.kBlueClr,
-
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(18))),
+                  color: AppColors.kBlueClr,
+                  border: Border.all(
+                    color: AppColors.kBlueClr,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(18))),
               child: new IconButton(
-
                 onPressed: () => print('button pressed'),
-
-                icon: new Icon(Icons.arrow_forward,color: Colors.white,),
+                icon: new Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
-
         ],
       ),
     );
@@ -326,7 +399,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return show
         ? Padding(
             padding: const EdgeInsets.only(top: 8),
-            child:ClipPath(
+            child: ClipPath(
               clipper: new CustomHalfCircleClipper(),
               child: new Container(
                 height: 20.0,
@@ -336,8 +409,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   shape: BoxShape.circle,
                 ),
               ),
-            )
-            )
+            ))
         : SizedBox();
   }
 }
@@ -357,3 +429,28 @@ class CustomHalfCircleClipper extends CustomClipper<Path> {
     return true;
   }
 }
+
+
+
+
+
+
+
+
+
+//Side bar text
+class SideTittle extends StatelessWidget {
+final tittle;
+
+  const SideTittle({Key key, this.tittle}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left:8.0),
+      child: Text(tittle,
+          style: TextStyle(color: Colors.grey[700], fontSize: 15.0)),
+    );
+  }
+}
+
+

@@ -1,4 +1,3 @@
-import 'package:cryptechs/constants/ui_views/login_signup/home.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
 import 'package:cryptechs/constants/validations/variables.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,7 +8,6 @@ import 'package:cryptechs/constants/ui_views/ui_components.dart';
 import '../../app_colors.dart';
 
 class SignUpScreen extends StatefulWidget {
-  //const SignUpScreen({Key key}) : super(key: key);
 
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -95,6 +93,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: pass);
+
+
         Navigator.of(context).pop();
         print('result is $result');
         print('hello firebase');
@@ -189,7 +189,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (String value) {
                     if (value.length == 0) {
                       return "Password is required !";
-                    } else {
+                    } else if(value.length < 6){
+                      return "Password must be 6 character long";
+                    }else {
                       return null;
                     }
                   },

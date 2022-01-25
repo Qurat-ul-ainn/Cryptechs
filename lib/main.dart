@@ -1,6 +1,5 @@
-import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
+import 'package:cryptechs/constants/ui_views/login_signup/home.dart';
 import 'package:flutter/material.dart';
-
 
 
 
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cryptechs',
-      home: LoginScreen()//LoginScreen()
+      home: HomeScreen()
     );
   }
 }
