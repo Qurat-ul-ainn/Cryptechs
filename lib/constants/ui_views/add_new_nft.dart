@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
 
-import '../app_colors.dart';
+import '../validations/app_colors.dart';
 
 class AddNewNFTScreen extends StatelessWidget {
   const AddNewNFTScreen({Key key}) : super(key: key);

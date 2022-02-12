@@ -1,5 +1,5 @@
 
-import 'package:cryptechs/constants/app_colors.dart';
+import 'package:cryptechs/constants/validations/app_colors.dart';
 import 'package:flutter/material.dart';
 
 //All Tittles
@@ -70,11 +70,11 @@ class CustomButton extends StatelessWidget {
 class  CustomTextButton extends StatelessWidget {
 final btnFunction;
 final btnText;
-final btntTxtClr;
+final btnTxtClr;
 
-  const CustomTextButton({Key key, this.btnFunction, this.btnText, this.btntTxtClr}) : super(key: key);
+  const CustomTextButton({Key key, this.btnFunction, this.btnText, this.btnTxtClr}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return TextButton(onPressed: btnFunction, child: Text(btnText,style: TextStyle(color: btntTxtClr),));
+    return TextButton(onPressed: btnFunction, child: Text(btnText,style: TextStyle(color: btnTxtClr),));
   }
 }

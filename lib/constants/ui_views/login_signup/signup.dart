@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
 
-import '../../app_colors.dart';
+import '../../validations/app_colors.dart';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -142,7 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           );
                         },
                         btnText: "Log in",
-                        btntTxtClr: Colors.blue,
+                        btnTxtClr: Colors.blue,
                       ),
                     ],
                   ),

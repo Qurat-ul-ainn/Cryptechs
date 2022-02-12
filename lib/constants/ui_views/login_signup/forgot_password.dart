@@ -1,4 +1,4 @@
-import 'package:cryptechs/constants/app_colors.dart';
+import 'package:cryptechs/constants/validations/app_colors.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/signup.dart';
 import 'package:cryptechs/constants/validations/variables.dart';
@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
-import 'package:cryptechs/glooble_key.dart';
+import 'package:cryptechs/constants/validations/glooble_key.dart';
 
 
 

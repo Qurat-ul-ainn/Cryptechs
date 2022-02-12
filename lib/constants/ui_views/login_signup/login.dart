@@ -1,12 +1,12 @@
-import 'package:cryptechs/constants/app_colors.dart';
-import 'package:cryptechs/constants/ui_views/login_signup/home.dart';
+import 'package:cryptechs/constants/ui_views/home.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/signup.dart';
+import 'package:cryptechs/constants/validations/app_colors.dart';
+import 'package:cryptechs/constants/validations/glooble_key.dart';
 import 'package:cryptechs/constants/validations/variables.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
-import 'package:cryptechs/glooble_key.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -15,26 +15,27 @@ import 'forgot_password.dart';
 
 
 class LoginScreen extends StatefulWidget {
-  // const LoginScreen({Key key}) : super(key: key);
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 class _LoginScreenState extends State<LoginScreen> {
+
   final _emailController = TextEditingController();
-
   final _passController = TextEditingController();
-
-
   bool isLoading = false;
   String errorMsg ="";
 
   Future<FirebaseUser> ifRegister(String email, String pass) async {
-    onLoading(context);
+   onLoading(context);
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
       AuthResult result =
           await _auth.signInWithEmailAndPassword(email: email, password: pass);
+      print("Result $result");
+
+      Navigator.of(context).pop();
       FirebaseUser user = result.user;
+      print("Login $user");
       return user;
     }
      on PlatformException catch (signUpError) {
@@ -58,40 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
         singleCommonAlert(context, errorMsg);
         print('Invalid Password');
       }
-      else{
+      else {
         print(signUpError.toString());
       }
-    // catch (e) {
-    //   print("Error ${e[0]}");
-    //   return null;
+
      }
   }
 
-  void _onLoading() {
-    AlertDialog alertDialog = AlertDialog(
-      content: new Row(
-        children: <Widget>[
-          new CircularProgressIndicator(),
-          SizedBox(
-            width: 30,
-          ),
-          new Text("Registering.. Please Wait !"),
-        ],
-      ),
-    );
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => alertDialog,
-    );
-    new Future.delayed(new Duration(seconds: 3), () {
-      Navigator.pop(context); //pop dialog
-
-      //userRegistration() ;
-      // msg  = data['msg'].toString();
-      //debugPrint('msg ${data['msg'].toString()}');
-    });
-  }
 
   onLoading(context) {
     AlertDialog alertDialog = AlertDialog(
@@ -131,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onPressed: () {
             //Put your code here which you want to execute on Yes button click.
             Navigator.of(context).pop();
-            //Navigator.of(context).push(new MaterialPageRoute(builder: (context)=> LoginScreen()));
+            Navigator.of(context).push(new MaterialPageRoute(builder: (context)=> HomeScreen()));
             //Navigator.popAndPushNamed(context,'/livechat');
           },
         ),
@@ -189,7 +163,6 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
           child: Form(
             key: VariableKeys.registerKey,
-            autovalidate: true,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                         btnText: "Create account",
-                        btntTxtClr: Colors.blue,
+                        btnTxtClr: Colors.blue,
                       ),
                     ],
                   ),
@@ -230,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextFormField(
                   controller: _emailController,
-                  autovalidate: false,
+                  // autovalidate: false,
                   validator: (val) {
                     String pattern = Variables.emailPattern;
                     RegExp regExp = new RegExp(pattern);
@@ -288,7 +261,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       },
                       btnText: "Forgot Password",
-                      btntTxtClr: AppColors.kGreyClr,
+                      btnTxtClr: AppColors.kGreyClr,
                     )),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0, bottom: 40.0),
@@ -296,9 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     btnFunction: () async {
                       final email = _emailController.text.toString().trim();
                       final pass = _passController.text.toString().trim();
-
                       FirebaseUser user = await ifRegister(email, pass);
-
                       if (user != null) {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {

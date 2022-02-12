@@ -1,4 +1,4 @@
-import 'package:cryptechs/constants/app_colors.dart';
+import 'package:cryptechs/constants/validations/app_colors.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
 import 'package:flutter/material.dart';
 

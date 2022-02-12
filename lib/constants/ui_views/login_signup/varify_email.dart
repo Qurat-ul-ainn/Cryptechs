@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:cryptechs/constants/ui_views/login_signup/home.dart';
+import 'package:cryptechs/constants/ui_views/home.dart';
 import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

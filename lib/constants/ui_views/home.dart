@@ -1,6 +1,7 @@
-import 'package:cryptechs/constants/app_colors.dart';
+import 'package:cryptechs/constants/validations/app_colors.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
-import 'package:cryptechs/glooble_key.dart';
+import 'package:cryptechs/constants/validations/glooble_key.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -17,6 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(
         child: ListView(
           // Remove padding
-          padding: EdgeInsets.zero,
+          // padding: EdgeInsets.zero,
+          padding: EdgeInsets.only(left: 15.0),
           children: [
             UserAccountsDrawerHeader(
               accountName: Text(
@@ -54,37 +59,43 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.white,
               ),
             ),
-            ListTile(
-              // leading: Icon(Icons.favorite),
-              title: SideTittle(tittle: "My Wallet",),
+            SideTittle(
+              tittle: "My Wallet",
               onTap: () => null,
             ),
-            ListTile(
-              title: SideTittle(tittle: "Portfolio",),
+            SideTittle(
+              tittle: "Portfolio",
               onTap: () => null,
             ),
-            ListTile(
-              title: SideTittle(tittle: "Static",),
+            SideTittle(
+              tittle: "Static",
               onTap: () => null,
             ),
-            ListTile(
-              title: SideTittle(tittle: "Transfer",),
+            SideTittle(
+              tittle: "Transfer",
               onTap: () => null,
             ),
-            ListTile(
-              title: SideTittle(tittle: "Withdraw",),
-            ),
-            ListTile(
-              title: SideTittle(tittle: "Settings",),
+            SideTittle(
+              tittle: "Withdraw",
               onTap: () => null,
             ),
-            ListTile(
-              title: SideTittle(tittle: "News List",),
+            SideTittle(
+              tittle: "Settings",
               onTap: () => null,
             ),
-            ListTile(
-              title: SideTittle(tittle: "Logout",),
+            SideTittle(
+              tittle: "News List",
               onTap: () => null,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.35),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: CustomTextButton(
+                btnFunction: () {
+                },
+                btnText: "Logout",
+                btnTxtClr: AppColors.kRedClr,
+              ),
             ),
           ],
         ),
@@ -117,16 +128,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: AppColors.kBlueClr,
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage('assets/icons/man.jpg'),
-                        //fit: BoxFit.cover,
-                      ),
+                  ClipOval(
+                    child: Image.asset(
+                      'assets/icons/man.jpg',
+                      fit: BoxFit.cover,
+                      width: 70,
+                      height: 70,
                     ),
                   ),
                 ],
@@ -213,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   CustomTextButton(
                     btnFunction: () {},
                     btnText: "See all >",
-                    btntTxtClr: Colors.blue,
+                    btnTxtClr: Colors.blue,
                   ),
                 ],
               ),
@@ -430,27 +437,25 @@ class CustomHalfCircleClipper extends CustomClipper<Path> {
   }
 }
 
-
-
-
-
-
-
-
-
 //Side bar text
 class SideTittle extends StatelessWidget {
-final tittle;
+  final tittle;
+  final onTap;
 
-  const SideTittle({Key key, this.tittle}) : super(key: key);
+  const SideTittle({Key key, this.tittle, this.onTap}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left:8.0),
-      child: Text(tittle,
-          style: TextStyle(color: Colors.grey[700], fontSize: 15.0)),
+    return ListTile(
+      dense: true,
+      onTap: onTap,
+      contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+      title: Padding(
+        padding: const EdgeInsets.only(left: 8.0),
+        child: Text(tittle,
+            style: TextStyle(color: Colors.grey[700], fontSize: 15.0)),
+      ),
     );
   }
 }
-
-
