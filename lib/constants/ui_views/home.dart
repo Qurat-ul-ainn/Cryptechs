@@ -353,28 +353,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       size: 25.0,
                     ),
                     // label: 'Home',
-                    title: showIndicator(_selectedIndex == 0)),
+                    label: showIndicator(_selectedIndex == 0).toString()),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.message_outlined,
                       size: 25.0,
                     ),
                     // label: 'Courses',
-                    title: showIndicator(_selectedIndex == 1)),
+                    label: showIndicator(_selectedIndex == 1).toString()),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.access_time_outlined,
                       size: 25.0,
                     ),
                     // label: 'Time Table',
-                    title: showIndicator(_selectedIndex == 2)),
+                    label: showIndicator(_selectedIndex == 2).toString()),
                 BottomNavigationBarItem(
                     icon: Icon(
                       Icons.account_circle_outlined,
                       size: 25.0,
                     ),
                     //label: 'Profile',
-                    title: showIndicator(_selectedIndex == 3)),
+                    label: showIndicator(_selectedIndex == 3).toString()),
               ],
             ),
           ),

@@ -1,11 +1,11 @@
 import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
+import 'package:cryptechs/constants/validations/app_colors.dart';
 import 'package:cryptechs/constants/validations/variables.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
 
-import '../../validations/app_colors.dart';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -33,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           SizedBox(
             width: 30,
           ),
-          new Text("Registering.. Please Wait !"),
+          Expanded(child: new Text("Registering...\nPlease Wait!")),
         ],
       ),
     );
@@ -120,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
           child: Form(
             key: registerKey,
-            autovalidate: true,
+            autovalidateMode: AutovalidateMode.always,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,7 +158,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 TextFormField(
                   controller: _emailController,
-                  autovalidate: false,
+                  autovalidateMode: AutovalidateMode.disabled,
                   validator: (val) {
                     String pattern = Variables.emailPattern;
                     RegExp regExp = new RegExp(pattern);

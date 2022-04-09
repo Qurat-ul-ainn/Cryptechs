@@ -1,12 +1,9 @@
-import 'package:cryptechs/constants/validations/app_colors.dart';
-import 'package:cryptechs/constants/ui_views/login_signup/login.dart';
-import 'package:cryptechs/constants/ui_views/login_signup/signup.dart';
+import 'package:cryptechs/constants/validations/glooble_key.dart';
 import 'package:cryptechs/constants/validations/variables.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cryptechs/constants/ui_views/ui_components.dart';
-import 'package:cryptechs/constants/validations/glooble_key.dart';
 
 
 
@@ -33,8 +30,8 @@ class _ResetPassScreenState extends State<ResetPassScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 50),
           margin: EdgeInsets.only(top:100.0),
           child: Form(
-            key: VariableKeys.registerKey,
-            autovalidate: true,
+           key: VariableKeys.forgotKey,
+            autovalidateMode: AutovalidateMode.always,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +50,7 @@ class _ResetPassScreenState extends State<ResetPassScreen> {
                 ),
                 TextFormField(
                   controller: _emailController,
-                  autovalidate: false,
+                  autovalidateMode: AutovalidateMode.disabled,
                   validator: (val) {
                     String pattern = Variables.emailPattern;
                     RegExp regExp = new RegExp(pattern);
